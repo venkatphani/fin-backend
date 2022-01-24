@@ -14,7 +14,7 @@ app.use(cors(corsOptions)); // middleware to enables cors
 app.use(helmet()); // middleware which adds http headers
 require("dotenv").config({ path: ".env" }); //setup environment
 
-db.sequelize.sync({ force: true }).then(() => {});
+db.sequelize.sync({ force: false }).then(() => {});
 // bring all routes here
 const routes = require("./src/routes");
 const port = process.env.PORT || 2020;
