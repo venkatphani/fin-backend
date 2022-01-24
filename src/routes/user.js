@@ -20,7 +20,7 @@ router.post("/register", validationMiddleware(["email", "password"]), async (req
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       errors.message = "Email is already registered";
-      res.status(409).json({ error: errors, success: false });
+      return res.status(409).json({ error: errors, success: false });
     }
     await User.create({ email, password: hash });
     return res.status(200).json({ success: true, message: "Registered Successfully" });
